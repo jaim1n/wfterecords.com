@@ -1,0 +1,147 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WFTE Records - Waiting For The End</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #fefbf6; /* Lighter off-white background */
+            color: #000000; /* Default black text */
+            font-family: 'Arial', sans-serif;
+        }
+        .dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fefbf6; /* Lighter off-white for dropdown */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 10;
+            min-width: 200px;
+            padding: 12px;
+            width: 100%;
+            left: 0;
+        }
+        .dropdown-menu p {
+            color: #000000; /* Default black text for dropdown content */
+            padding: 8px 12px;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .dropdown-menu a {
+            color: #000000; /* Default black text for links */
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+        .dropdown-menu p:hover, .dropdown-menu a:hover {
+            background-color: #f5f2ed; /* Slightly darker off-white for hover */
+        }
+        @media (max-width: 640px) {
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+            }
+            .header-img {
+                max-width: 80%; /* Ensure image scales down on mobile */
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center">
+    <!-- Header -->
+    <header class="w-full py-6 text-center">
+        <div class="container mx-auto px-4">
+            <img src="https://github.com/jaim1n/wfte/1000203099-modified.png" alt="WFTE Records Logo" class="header-img mx-auto" style="max-width: 300px; height: auto;">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="w-full py-4" style="background-color: #fefbf6;">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
+            <!-- Artists Dropdown -->
+            <div class="dropdown relative w-full sm:w-auto text-center">
+                <button class="focus:outline-none w-full sm:w-auto">Artists</button>
+                <div class="dropdown-menu mt-2 rounded-md">
+                    <p>Artist 1: Innovative electronic music producer known for blending ambient and techno.</p>
+                    <p>Artist 2: Soulful vocalist with a unique fusion of jazz and indie pop.</p>
+                    <p>Artist 3: Experimental rock band pushing boundaries with cinematic soundscapes.</p>
+                </div>
+            </div>
+            <!-- Releases Dropdown -->
+            <div class="dropdown relative w-full sm:w-auto text-center">
+                <button class="focus:outline-none w-full sm:w-auto">Releases</button>
+                <div class="dropdown-menu mt-2 rounded-md">
+                    <p>Release 1: "Echoes of Tomorrow" - A groundbreaking electronic album, 2025.</p>
+                    <p>Release 2: "Midnight Waves" - Soulful EP with jazz influences, 2024.</p>
+                    <p>Release 3: "Fractured Light" - Experimental rock LP, 2023.</p>
+                </div>
+            </div>
+            <!-- Contact Dropdown -->
+            <div class="dropdown relative w-full sm:w-auto text-center">
+                <button class="focus:outline-none w-full sm:w-auto">Contact</button>
+                <div class="dropdown-menu mt-2 rounded-md">
+                    <a href="https://waitingfortheend.com/contact">Email</a>
+                    <a href="https://waitingfortheend.com/contact">Social Media</a>
+                    <a href="https://waitingfortheend.com/contact">Phone</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12 flex-grow text-center">
+        <h2 class="text-3xl font-semibold mb-4">Waiting For The End</h2>
+        <p class="text-lg mb-6">Welcome to WFTE Records, your home for groundbreaking music and innovative artists. Explore our roster, latest releases, and get in touch to join our journey.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-6 text-center" style="background-color: #fefbf6;">
+        <p>© 2025 WFTE Records. All rights reserved.</p>
+    </footer>
+</body>
+</html>
