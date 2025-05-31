@@ -315,8 +315,6 @@
         
                 // Allow DOM to update before measuring
                 setTimeout(() => {
-                    dropdown.offsetHeight;
-
                     const dropdownBottom = dropdown.getBoundingClientRect().bottom;
                     const viewportHeight = window.innerHeight;
                     const overflows = dropdownBottom > viewportHeight;
