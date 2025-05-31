@@ -37,30 +37,6 @@
         }
         return gk_fileData[filename] || "";
         }
-
-        function toggleDropdown(dropdownId) {
-            // Close all other dropdowns
-            const allDropdowns = document.querySelectorAll('.dropdown-menu');
-            allDropdowns.forEach(dropdown => {
-                if (dropdown.id !== dropdownId) {
-                    dropdown.classList.remove('show');
-                }
-            });
-            
-            // Toggle the clicked dropdown
-            const dropdown = document.getElementById(dropdownId);
-            dropdown.classList.toggle('show');
-        }
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                const allDropdowns = document.querySelectorAll('.dropdown-menu');
-                allDropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('show');
-                });
-            }
-        });
         </script><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +55,7 @@
             background-color: #f5f2ed; /* Slightly darker off-white */
             border: 1px solid #e0ddd6;
             border-radius: 4px;
-            margin-top: 8px;
+            margin-top: 4px; /* Reduced from 8px */
             padding: 12px;
             width: 100%;
         }
@@ -156,102 +132,167 @@
 </head>
 <body class="min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="w-full py-6 text-center">
-        <div class="container mx-auto px-4">
-            <img src="logo.png" class="mx-auto" style="max-width: 300px; height: auto;">
+    <header class="w-full py-2 text-center">
+        <div class="container mx-auto px-2">
+            <img src="logo.png" class="mx-auto" style="max-width: 200px; height: auto;">
         </div>
     </header>
 
     <!-- Content Wrapper -->
     <div class="flex-grow">
         <!-- Main Content -->
-        <main class="container mx-auto px-4 py-12 text-center">
-            <h2 class="text-3xl font-semibold mb-4">WFTE Records</h2>
-            <p class="text-lg mb-6">Home of Waiting For The End, Florida-based electronic & trap music label.</p>
+        <main class="container mx-auto px-2 py-6 text-center">
+            <h2 class="text-3xl font-semibold mb-2">WFTE Records</h2>
+            <p class="text-lg mb-2">Florida-based electronic & trap music label.</p>
         </main>
 
         <!-- Navigation -->
-        <nav class="w-full py-4" style="background-color: #fefbf6;">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-row justify-center items-center space-x-4 sm:space-x-8">
-                <!-- Artists Tab -->
-                <div class="dropdown text-center">
-                    <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('artists')">Artists</button>
+        <nav class="w-full py-2" style="background-color: #fefbf6;">
+            <div class="container mx-auto px-2">
+                <div class="flex flex-row justify-center items-center space-x-4 sm:space-x-8">
+                    <!-- Artists Tab -->
+                    <div class="dropdown text-center">
+                        <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('artists')">Artists</button>
+                    </div>
+                    <!-- Releases Tab -->
+                    <div class="dropdown text-center">
+                        <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('releases')">Releases</button>
+                    </div>
+                    <!-- Contact Tab -->
+                    <div class="dropdown text-center">
+                        <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('contact')">Contact</button>
+                    </div>
                 </div>
-                <!-- Releases Tab -->
-                <div class="dropdown text-center">
-                    <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('releases')">Releases</button>
+                
+                <!-- Artists Content -->
+                <div id="artists" class="dropdown-menu">
+                    <div class="artist-item">
+                        <span>bluu</span>
+                        <div class="social-links">
+                            <a href="#" title="Instagram">📷</a>
+                            <a href="#" title="Spotify">🎵</a>
+                            <a href="#" title="SoundCloud">☁️</a>
+                        </div>
+                    </div>
+                    <div class="artist-item">
+                        <span>Digital Baptism</span>
+                        <div class="social-links">
+                            <a href="#" title="Instagram">📷</a>
+                            <a href="#" title="Spotify">🎵</a>
+                            <a href="#" title="SoundCloud">☁️</a>
+                        </div>
+                    </div>
+                    <div class="artist-item">
+                        <span>JEPE</span>
+                        <div class="social-links">
+                            <a href="#" title="Instagram">📷</a>
+                            <a href="#" title="Spotify">🎵</a>
+                            <a href="#" title="SoundCloud">☁️</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Contact Tab -->
-                <div class="dropdown text-center">
-                    <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('contact')">Contact</button>
+                
+                <!-- Releases Content -->
+                <div id="releases" class="dropdown-menu">
+                    <div class="release-item">
+                        <div class="release-image">Album Art</div>
+                        <div class="text-center">
+                            <div class="font-semibold">bluu</div>
+                            <div class="text-sm">Latest Release</div>
+                        </div>
+                    </div>
+                    <div class="release-item">
+                        <div class="release-image">Album Art</div>
+                        <div class="text-center">
+                            <div class="font-semibold">Digital Baptism</div>
+                            <div class="text-sm">New EP</div>
+                        </div>
+                    </div>
+                    <div class="release-item">
+                        <div class="release-image">Album Art</div>
+                        <div class="text-center">
+                            <div class="font-semibold">JEPE</div>
+                            <div class="text-sm">Recent Single</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Content -->
+                <div id="contact" class="dropdown-menu">
+                    <p>Email: jaimin@waitingfortheend.com</p>
                 </div>
             </div>
-            
-            <!-- Artists Content -->
-            <div id="artists" class="dropdown-menu">
-                <div class="artist-item">
-                    <span>bluu</span>
-                    <div class="social-links">
-                        <a href="#" title="Instagram">📷</a>
-                        <a href="#" title="Spotify">🎵</a>
-                        <a href="#" title="SoundCloud">☁️</a>
-                    </div>
-                </div>
-                <div class="artist-item">
-                    <span>Digital Baptism</span>
-                    <div class="social-links">
-                        <a href="#" title="Instagram">📷</a>
-                        <a href="#" title="Spotify">🎵</a>
-                        <a href="#" title="SoundCloud">☁️</a>
-                    </div>
-                </div>
-                <div class="artist-item">
-                    <span>JEPE</span>
-                    <div class="social-links">
-                        <a href="#" title="Instagram">📷</a>
-                        <a href="#" title="Spotify">🎵</a>
-                        <a href="#" title="SoundCloud">☁️</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Releases Content -->
-            <div id="releases" class="dropdown-menu">
-                <div class="release-item">
-                    <div class="release-image">Album Art</div>
-                    <div class="text-center">
-                        <div class="font-semibold">bluu</div>
-                        <div class="text-sm">Latest Release</div>
-                    </div>
-                </div>
-                <div class="release-item">
-                    <div class="release-image">Album Art</div>
-                    <div class="text-center">
-                        <div class="font-semibold">Digital Baptism</div>
-                        <div class="text-sm">New EP</div>
-                    </div>
-                </div>
-                <div class="release-item">
-                    <div class="release-image">Album Art</div>
-                    <div class="text-center">
-                        <div class="font-semibold">JEPE</div>
-                        <div class="text-sm">Recent Single</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Content -->
-            <div id="contact" class="dropdown-menu">
-                <p>Email: jaimin@waitingfortheend.com</p>
-            </div>
-        </div>
-    </nav>
+        </nav>
     </div>
 
     <!-- Footer -->
-    <footer class="w-full py-6 text-center" style="background-color: #fefbf6;">
+    <footer class="w-full py-2 text-center" style="background-color: #fefbf6;">
         <p>© 2025 Waiting For The End. All rights reserved.</p>
     </footer>
+
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+
+        function toggleDropdown(dropdownId) {
+            // Close all other dropdowns
+            const allDropdowns = document.querySelectorAll('.dropdown-menu');
+            allDropdowns.forEach(dropdown => {
+                if (dropdown.id !== dropdownId) {
+                    dropdown.classList.remove('show');
+                }
+            });
+            
+            // Toggle the clicked dropdown
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                const allDropdowns = document.querySelectorAll('.dropdown-menu');
+                allDropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
