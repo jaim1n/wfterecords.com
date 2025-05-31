@@ -37,6 +37,30 @@
         }
         return gk_fileData[filename] || "";
         }
+
+        function toggleDropdown(dropdownId) {
+            // Close all other dropdowns
+            const allDropdowns = document.querySelectorAll('.dropdown-menu');
+            allDropdowns.forEach(dropdown => {
+                if (dropdown.id !== dropdownId) {
+                    dropdown.classList.remove('show');
+                }
+            });
+            
+            // Toggle the clicked dropdown
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                const allDropdowns = document.querySelectorAll('.dropdown-menu');
+                allDropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
         </script><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,25 +74,24 @@
             color: #000000; /* Default black text */
             font-family: 'Arial', sans-serif;
         }
-        .dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu {
-            display: block;
-        }
         .dropdown-menu {
             display: none;
-            position: absolute;
-            background-color: #fefbf6; /* Lighter off-white for dropdown */
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 10;
-            min-width: 200px;
+            background-color: #f5f2ed; /* Slightly darker off-white */
+            border: 1px solid #e0ddd6;
+            border-radius: 4px;
+            margin-top: 8px;
             padding: 12px;
             width: 100%;
-            left: 0;
+        }
+        .dropdown-menu.show {
+            display: block;
         }
         .dropdown-menu p {
             color: #000000; /* Default black text for dropdown content */
             padding: 8px 12px;
             margin: 0;
             font-size: 0.9rem;
+            text-align: center;
         }
         .dropdown-menu a {
             color: #000000; /* Default black text for links */
@@ -80,11 +103,50 @@
         .dropdown-menu p:hover, .dropdown-menu a:hover {
             background-color: #f5f2ed; /* Slightly darker off-white for hover */
         }
+        .artist-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            margin: 4px 0;
+            text-align: center;
+        }
+        .artist-item span {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .social-links {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        .social-links a {
+            padding: 2px;
+            font-size: 1.2em;
+        }
+        .release-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            margin: 4px 0;
+            text-align: center;
+        }
+        .release-image {
+            width: 80px;
+            height: 80px;
+            background-color: #ddd;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            color: #666;
+        }
         @media (max-width: 640px) {
-            .dropdown-menu {
-                position: static;
-                box-shadow: none;
-            }
             .header-img {
                 max-width: 80%; /* Ensure image scales down on mobile */
                 height: auto;
@@ -92,56 +154,104 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center">
+<body class="min-h-screen flex flex-col">
     <!-- Header -->
     <header class="w-full py-6 text-center">
         <div class="container mx-auto px-4">
-            <img src="logo.png" style="max-width: 300px; height: auto;">
+            <img src="logo.png" class="mx-auto" style="max-width: 300px; height: auto;">
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav class="w-full py-4" style="background-color: #fefbf6;">
-        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
-            <!-- Artists Dropdown -->
-            <div class="dropdown relative w-full sm:w-auto text-center">
-                <button class="focus:outline-none w-full sm:w-auto">Artists</button>
-                <div class="dropdown-menu mt-2 rounded-md">
-                    <p>Artist 1: Innovative electronic music producer known for blending ambient and techno.</p>
-                    <p>Artist 2: Soulful vocalist with a unique fusion of jazz and indie pop.</p>
-                    <p>Artist 3: Experimental rock band pushing boundaries with cinematic soundscapes.</p>
+    <!-- Content Wrapper -->
+    <div class="flex-grow">
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-12 text-center">
+            <h2 class="text-3xl font-semibold mb-4">WFTE Records</h2>
+            <p class="text-lg mb-6">Home of Waiting For The End, Florida-based electronic & trap music label.</p>
+        </main>
+
+        <!-- Navigation -->
+        <nav class="w-full py-4" style="background-color: #fefbf6;">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-row justify-center items-center space-x-4 sm:space-x-8">
+                <!-- Artists Tab -->
+                <div class="dropdown text-center">
+                    <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('artists')">Artists</button>
+                </div>
+                <!-- Releases Tab -->
+                <div class="dropdown text-center">
+                    <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('releases')">Releases</button>
+                </div>
+                <!-- Contact Tab -->
+                <div class="dropdown text-center">
+                    <button class="focus:outline-none px-4 py-2" onclick="toggleDropdown('contact')">Contact</button>
                 </div>
             </div>
-            <!-- Releases Dropdown -->
-            <div class="dropdown relative w-full sm:w-auto text-center">
-                <button class="focus:outline-none w-full sm:w-auto">Releases</button>
-                <div class="dropdown-menu mt-2 rounded-md">
-                    <p>Release 1: "Echoes of Tomorrow" - A groundbreaking electronic album, 2025.</p>
-                    <p>Release 2: "Midnight Waves" - Soulful EP with jazz influences, 2024.</p>
-                    <p>Release 3: "Fractured Light" - Experimental rock LP, 2023.</p>
+            
+            <!-- Artists Content -->
+            <div id="artists" class="dropdown-menu">
+                <div class="artist-item">
+                    <span>bluu</span>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="Spotify">🎵</a>
+                        <a href="#" title="SoundCloud">☁️</a>
+                    </div>
+                </div>
+                <div class="artist-item">
+                    <span>Digital Baptism</span>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="Spotify">🎵</a>
+                        <a href="#" title="SoundCloud">☁️</a>
+                    </div>
+                </div>
+                <div class="artist-item">
+                    <span>JEPE</span>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="Spotify">🎵</a>
+                        <a href="#" title="SoundCloud">☁️</a>
+                    </div>
                 </div>
             </div>
-            <!-- Contact Dropdown -->
-            <div class="dropdown relative w-full sm:w-auto text-center">
-                <button class="focus:outline-none w-full sm:w-auto">Contact</button>
-                <div class="dropdown-menu mt-2 rounded-md">
-                    <a href="https://waitingfortheend.com/contact">Email</a>
-                    <a href="https://waitingfortheend.com/contact">Social Media</a>
-                    <a href="https://waitingfortheend.com/contact">Phone</a>
+            
+            <!-- Releases Content -->
+            <div id="releases" class="dropdown-menu">
+                <div class="release-item">
+                    <div class="release-image">Album Art</div>
+                    <div class="text-center">
+                        <div class="font-semibold">bluu</div>
+                        <div class="text-sm">Latest Release</div>
+                    </div>
                 </div>
+                <div class="release-item">
+                    <div class="release-image">Album Art</div>
+                    <div class="text-center">
+                        <div class="font-semibold">Digital Baptism</div>
+                        <div class="text-sm">New EP</div>
+                    </div>
+                </div>
+                <div class="release-item">
+                    <div class="release-image">Album Art</div>
+                    <div class="text-center">
+                        <div class="font-semibold">JEPE</div>
+                        <div class="text-sm">Recent Single</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Content -->
+            <div id="contact" class="dropdown-menu">
+                <p>Email: jaimin@waitingfortheend.com</p>
             </div>
         </div>
     </nav>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12 flex-grow text-center">
-        <h2 class="text-3xl font-semibold mb-4">Waiting For The End</h2>
-        <p class="text-lg mb-6">Welcome to WFTE Records, your home for groundbreaking music and innovative artists. Explore our roster, latest releases, and get in touch to join our journey.</p>
-    </main>
+    </div>
 
     <!-- Footer -->
     <footer class="w-full py-6 text-center" style="background-color: #fefbf6;">
-        <p>© 2025 WFTE Records. All rights reserved.</p>
+        <p>© 2025 Waiting For The End. All rights reserved.</p>
     </footer>
 </body>
 </html>
