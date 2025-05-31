@@ -255,7 +255,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="w-full py-2 text-center sm:static fixed bottom-0 left-0">
+    <footer id="site-footer" class="w-full py-2 text-center fixed bottom-0 left-0 sm:static">
         <p>© 2025 Waiting For The End. All rights reserved.</p>
     </footer>
 
@@ -299,33 +299,45 @@
         return gk_fileData[filename] || "";
         }
 
-    function toggleDropdown(dropdownId) {
-        const dropdown = document.getElementById(dropdownId);
-        const isOpen = dropdown.classList.contains('show');
-
-        // Close all dropdowns
-        document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
-
-        const body = document.getElementById('main-body');
-
-        if (!isOpen) {
-            dropdown.classList.add('show');
-
-            // Wait for DOM update to measure
-            setTimeout(() => {
-                const dropdownBottom = dropdown.getBoundingClientRect().bottom;
-                const viewportHeight = window.innerHeight;
-
-                const overflows = dropdownBottom > viewportHeight;
-
-                body.classList.toggle('overflow-y-auto', overflows);
-                body.classList.toggle('overflow-hidden', !overflows);
-            }, 50);
-        } else {
-            body.classList.remove('overflow-y-auto');
-            body.classList.add('overflow-hidden');
+        function toggleDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            const isOpen = dropdown.classList.contains('show');
+        
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
+        
+            const body = document.getElementById('main-body');
+            const footer = document.getElementById('site-footer');
+        
+            if (!isOpen) {
+                dropdown.classList.add('show');
+        
+                // Allow DOM to update before measuring
+                setTimeout(() => {
+                    const dropdownBottom = dropdown.getBoundingClientRect().bottom;
+                    const viewportHeight = window.innerHeight;
+                    const overflows = dropdownBottom > viewportHeight;
+        
+                    // Enable or disable scroll
+                    body.classList.toggle('overflow-y-auto', overflows);
+                    body.classList.toggle('overflow-hidden', !overflows);
+        
+                    // Push footer down if content overflows
+                    if (overflows) {
+                        footer.classList.remove('fixed', 'bottom-0', 'left-0');
+                        footer.classList.add('static');
+                    } else {
+                        footer.classList.remove('static');
+                        footer.classList.add('fixed', 'bottom-0', 'left-0');
+                    }
+                }, 50);
+            } else {
+                body.classList.remove('overflow-y-auto');
+                body.classList.add('overflow-hidden');
+                footer.classList.remove('static');
+                footer.classList.add('fixed', 'bottom-0', 'left-0');
+            }
         }
-    }
     </script>
 </body>
 </html>
