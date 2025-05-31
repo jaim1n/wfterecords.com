@@ -142,9 +142,14 @@
                 align-items: center;
             }
         }
+        @media (max-width: 640px) {
+            .dropdown-menu {
+                margin-bottom: 60px; /* avoid overlap with fixed footer */
+            }
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body id="main-body" class="min-h-screen flex flex-col overflow-hidden">
     <!-- Header -->
     <header class="w-full py-2 text-center">
         <div class="container mx-auto px-2">
@@ -294,19 +299,33 @@
         return gk_fileData[filename] || "";
         }
 
-        function toggleDropdown(dropdownId) {
-            // Close all other dropdowns
-            const allDropdowns = document.querySelectorAll('.dropdown-menu');
-            allDropdowns.forEach(dropdown => {
-                if (dropdown.id !== dropdownId) {
-                    dropdown.classList.remove('show');
-                }
-            });
-            
-            // Toggle the clicked dropdown
-            const dropdown = document.getElementById(dropdownId);
-            dropdown.classList.toggle('show');
+    function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        const isOpen = dropdown.classList.contains('show');
+
+        // Close all dropdowns
+        document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
+
+        const body = document.getElementById('main-body');
+
+        if (!isOpen) {
+            dropdown.classList.add('show');
+
+            // Wait for DOM update to measure
+            setTimeout(() => {
+                const dropdownBottom = dropdown.getBoundingClientRect().bottom;
+                const viewportHeight = window.innerHeight;
+
+                const overflows = dropdownBottom > viewportHeight;
+
+                body.classList.toggle('overflow-y-auto', overflows);
+                body.classList.toggle('overflow-hidden', !overflows);
+            }, 50);
+        } else {
+            body.classList.remove('overflow-y-auto');
+            body.classList.add('overflow-hidden');
         }
+    }
     </script>
 </body>
 </html>
