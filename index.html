@@ -183,7 +183,6 @@
 
         .animate-marquee {
         display: inline-block;
-        transform: translateX(100%);
         animation: marquee 30s linear infinite;
         }
         
@@ -202,7 +201,7 @@
         }
     </style>
 </head>
-<body id="main-body" class="min-h-screen flex flex-col overflow-y-auto">
+<body id="main-body" class="min-h-screen flex flex-col overflow-hidden">
     <!-- Header -->
     <header class="w-full py-2 text-center">
         <div class="container mx-auto px-2">
@@ -327,7 +326,7 @@
     </div>
 
     <!-- Footer -->
-    <footer id="site-footer" class="w-full py-2 text-center fixed bottom-0 left-0 sm:static relative z-10">
+    <footer id="site-footer" class="w-full py-2 text-center sticky bottom-0 sm:static relative z-10">
         <p>© 2025 Waiting For The End. All rights reserved.</p>
         <div id="emoji-waterfall" class="w-full h-24 overflow-hidden"></div>
     </footer>
@@ -387,7 +386,7 @@
                 dropdown.classList.add('show');
 
                 setTimeout(() => {
-                    const contentHeight = document.documentElement.scrollHeight;
+                    const contentHeight = document.body.scrollHeight;
                     const viewportHeight = window.innerHeight;
                     const overflows = contentHeight > viewportHeight;
 
