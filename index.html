@@ -43,12 +43,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WFTE Records - Waiting For The End</title>
-    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="WFTE" />
-    <link rel="manifest" href="/images/favicon/site.webmanifest" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -150,14 +144,14 @@
             }
         }
         #emoji-waterfall {
-          position: fixed;
+          position: absolute;
           bottom: 0;
           left: 0;
           width: 100%;
           height: 6rem;
           overflow: hidden;
           pointer-events: none;
-          z-index: 0;
+          z-index: 5;
         }
 
         .emoji {
@@ -190,6 +184,7 @@
         .animate-marquee {
         display: inline-block;
         animation: marquee 30s linear infinite;
+        animation-delay: 0s;
         }
         
         .artists-wrapper {
@@ -414,6 +409,27 @@
                 footer.classList.add('fixed', 'bottom-0', 'left-0');
             }
         }
+
+        // Dynamically update scroll state and footer position on window resize
+        window.addEventListener('resize', () => {
+            const body = document.getElementById('main-body');
+            const footer = document.getElementById('site-footer');
+
+            const contentHeight = document.body.scrollHeight;
+            const viewportHeight = window.innerHeight;
+            const overflows = contentHeight > viewportHeight;
+
+            body.classList.toggle('overflow-y-auto', overflows);
+            body.classList.toggle('overflow-hidden', !overflows);
+
+            if (overflows) {
+                footer.classList.remove('fixed', 'bottom-0', 'left-0');
+                footer.classList.add('static');
+            } else {
+                footer.classList.remove('static');
+                footer.classList.add('fixed', 'bottom-0', 'left-0');
+            }
+        });
         const emojiContainer = document.getElementById('emoji-waterfall');
         const emojiList = ['🌊', '🌀', '😵‍💫', '🤯', '✨', '👻', '🧠', '💫'];
 
