@@ -1,6 +1,6 @@
 {
-  "name": "Waiting For The End",
-  "short_name": "WFTE",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/images/favicon/web-app-manifest-192x192.png",
@@ -15,5 +15,7 @@
       "purpose": "maskable"
     }
   ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone"
 }
