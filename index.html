@@ -182,14 +182,26 @@
         }
         /* Marquee animation for scrolling text */
         @keyframes marquee {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(-100%); }
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        .marquee-container {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          max-width: 100vw;
         }
 
         .animate-marquee {
-        display: inline-block;
-        animation: marquee 30s linear infinite;
-        animation-delay: 0s;
+          display: inline-block;
+          white-space: nowrap;
+          animation: marquee 30s linear infinite;
+          animation-iteration-count: infinite;
         }
         
         .artists-wrapper {
@@ -220,10 +232,18 @@
         <!-- Main Content -->
         <main class="container mx-auto px-2 py-6 text-center">
             <h2 class="text-3xl font-semibold mb-2">WFTE Records</h2>
-        <div class="overflow-hidden text-lg mb-2 mx-auto" style="width: max-content; max-width: 90vw;">
-            <div class="animate-marquee inline-block whitespace-nowrap">
-                Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
-            </div>
+        <div class="marquee-container overflow-hidden text-lg mb-2">
+          <div class="animate-marquee whitespace-nowrap">
+            <span class="inline-block pr-8">
+              Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
+            </span>
+            <span class="inline-block pr-8">
+              Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
+            </span>
+            <span class="inline-block pr-8">
+              Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
+            </span>
+          </div>
         </div>
         </main>
 
@@ -408,10 +428,27 @@
                     }
                 }, 50);
             } else {
-                body.classList.remove('overflow-y-auto');
-                body.classList.add('overflow-hidden');
-                footer.classList.remove('static');
-                footer.classList.add('fixed', 'bottom-0', 'left-0');
+                // Remove the dropdown
+                dropdown.classList.remove('show');
+
+                // Recalculate content height after closing
+                setTimeout(() => {
+                    const contentHeight = document.body.scrollHeight;
+                    const viewportHeight = window.innerHeight;
+                    const overflows = contentHeight > viewportHeight;
+
+                    body.classList.toggle('overflow-y-auto', overflows);
+                    body.classList.toggle('overflow-hidden', !overflows);
+
+                    if (overflows) {
+                        footer.classList.remove('fixed', 'bottom-0', 'left-0');
+                        footer.classList.add('static');
+                    } else {
+                        footer.classList.remove('static');
+                        footer.classList.add('fixed', 'bottom-0', 'left-0');
+                    }
+                    window.scrollTo({ top: 0 });
+                }, 50);
             }
         }
 
