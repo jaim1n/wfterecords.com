@@ -84,6 +84,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            width: 200px;
             padding: 8px 12px;
             margin: 4px 0;
             text-align: center;
@@ -116,16 +117,11 @@
             padding: 8px 12px;
         }
         .release-image {
-            width: 80px;
-            height: 80px;
-            background-color: #ddd;
+            width: 120px;
+            height: 120px;
             border-radius: 4px;
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            color: #666;
+            overflow: hidden;
         }
         body.noscroll {
             overflow: hidden;
@@ -179,13 +175,38 @@
             opacity: 0;
         }
         }
+        /* Marquee animation for scrolling text */
+        @keyframes marquee {
+          0% { transform: translateX(100%); }
+          100% { transform: translateX(-100%); }
+        }
+
+        .animate-marquee {
+        display: inline-block;
+        transform: translateX(100%);
+        animation: marquee 30s linear infinite;
+        }
+        
+        .artists-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+        .artists-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+        }
     </style>
 </head>
-<body id="main-body" class="min-h-screen flex flex-col overflow-hidden">
+<body id="main-body" class="min-h-screen flex flex-col overflow-y-auto">
     <!-- Header -->
     <header class="w-full py-2 text-center">
         <div class="container mx-auto px-2">
-            <img src="images/zeus.png" class="mx-auto" style="max-width: 200px; height: auto;">
+            <img src="images/logo.png" class="mx-auto" style="max-width: 200px; height: auto;">
         </div>
     </header>
 
@@ -194,7 +215,11 @@
         <!-- Main Content -->
         <main class="container mx-auto px-2 py-6 text-center">
             <h2 class="text-3xl font-semibold mb-2">WFTE Records</h2>
-            <p class="text-lg mb-2">Florida-based electronic & trap music label.</p>
+        <div class="overflow-hidden text-lg mb-2 mx-auto" style="width: max-content; max-width: 90vw;">
+            <div class="animate-marquee inline-block whitespace-nowrap">
+                Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
+            </div>
+        </div>
         </main>
 
         <!-- Navigation -->
@@ -217,26 +242,37 @@
                 
                 <!-- Artists Content -->
                 <div id="artists" class="dropdown-menu">
-                    <div class="artist-item">
-                        <span>bluu</span>
-                        <div class="social-links">
-                            <a href="https://instagram.com/9bluu" title="Instagram">📷</a>
-                            <a href="https://soundcloud.com/9bluu" title="SoundCloud">☁️</a>
+                    <div class="artists-wrapper">
+                        <div class="artist-item">
+                            <div class="release-image">
+                                <img src="images/artists/bluu.png" alt="bluu" class="w-full h-full object-cover rounded">
+                            </div>
+                            <span>bluu</span>
+                            <div class="social-links">
+                                <a href="https://instagram.com/9bluu" title="Instagram">📷</a>
+                                <a href="https://soundcloud.com/9bluu" title="SoundCloud">☁️</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="artist-item">
-                        <span>JEPE</span>
-                        <div class="social-links">
-                            <a href="https://www.instagram.com/jespe.rr" title="Instagram">📷</a>
-                            <a href="https://x.com/jepex" title="Twitter">🐦</a>
-                            <a href="https://open.spotify.com/artist/5Fuk4ElaLTjEfYu2fLT68p" title="Spotify">🎵</a>
-                            <a href="https://soundcloud.com/2043" title="SoundCloud">☁️</a>
+                        <div class="artist-item">
+                            <div class="release-image">
+                                <img src="images/artists/jepe.jpg" alt="JEPE" class="w-full h-full object-cover rounded">
+                            </div>
+                            <span>JEPE</span>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/jespe.rr" title="Instagram">📷</a>
+                                <a href="https://x.com/jepex" title="Twitter">🐦</a>
+                                <a href="https://open.spotify.com/artist/5Fuk4ElaLTjEfYu2fLT68p" title="Spotify">🎵</a>
+                                <a href="https://soundcloud.com/2043" title="SoundCloud">☁️</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="artist-item">
-                        <span>Ray Angel (Digital Baptism)</span>
-                        <div class="social-links">
-                            <a href="https://www.instagram.com/iseewhatyouwantfromme" title="Instagram">📷</a>
+                        <div class="artist-item">
+                            <div class="release-image">
+                                <img src="images/artists/ray.png" alt="Ray Angel (Digital Baptism)" class="w-full h-full object-cover rounded">
+                            </div>
+                            <span>Ray Angel<br>(Digital Baptism)</span>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/iseewhatyouwantfromme" title="Instagram">📷</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,26 +282,30 @@
                         <div class="releases-wrapper">
                            <div class="release-item">
                                 <a href="https://open.spotify.com/track/6Sqqd8jJ3lgcZkZAHeMfp4?si=8733e530cf8641a9" class="release-image">
-                                    <img src="images/covers/JEPE - YOUNG & TURNT - Single.jpg" alt="JEPE - YOUNG & TURNT - Single">
+                                    <img src="images/covers/632x632bb.png" alt="JEPE - YOUNG & TURNT" class="w-full h-full object-cover rounded">
                                 </a>
                                 <a href="https://open.spotify.com/track/6Sqqd8jJ3lgcZkZAHeMfp4?si=8733e530cf8641a9" class="text-center">
                                     <div class="font-semibold">JEPE</div>
-                                    <div class="text-sm">YOUNG & TURNT - Single</div>
+                                    <div class="text-sm">YOUNG & TURNT<br>Single</div>
                                 </a>
                             </div>
                             <div class="release-item">
-                                <div class="release-image">Album Art</div>
-                                <div class="text-center">
+                                <a href="https://soundcloud.com/9bluu/sets/rio" class="release-image">
+                                    <img src="images/covers/rio.jpeg" alt="bluu - rio" class="w-full h-full object-cover rounded">
+                                </a>
+                                <a href="https://soundcloud.com/9bluu/sets/rio" class="text-center">
                                     <div class="font-semibold">bluu</div>
-                                    <div class="text-sm">TBA - Single</div>
-                                </div>
+                                    <div class="text-sm">rio<br>Album</div>
+                                </a>
                             </div>
                             <div class="release-item">
-                                <div class="release-image">Album Art</div>
-                                <div class="text-center">
-                                    <div class="font-semibold">Digital Baptism</div>
-                                    <div class="text-sm">TBA - EP</div>
-                                </div>
+                                <a href="https://soundcloud.com/9bluu/sets/bluuray" class="release-image">
+                                    <img src="images/covers/bluuray.jpeg" alt="bluu - bluuray" class="w-full h-full object-cover rounded">
+                                </a>
+                                <a href="https://soundcloud.com/9bluu/sets/bluuray" class="text-center">
+                                    <div class="font-semibold">bluu</div>
+                                    <div class="text-sm">bluuray<br>Album</div>
+                                </a>
                             </div>
                         </div>
                 </div>
@@ -286,12 +326,10 @@
         </nav>
     </div>
 
-    <!-- Emoji Waterfall Container -->
-    <div id="emoji-waterfall" class="w-full h-24 overflow-hidden"></div>
-
     <!-- Footer -->
     <footer id="site-footer" class="w-full py-2 text-center fixed bottom-0 left-0 sm:static relative z-10">
         <p>© 2025 Waiting For The End. All rights reserved.</p>
+        <div id="emoji-waterfall" class="w-full h-24 overflow-hidden"></div>
     </footer>
 
     <script type="text/javascript">
@@ -348,9 +386,8 @@
             if (!isOpen) {
                 dropdown.classList.add('show');
 
-                // Allow DOM to update before measuring
                 setTimeout(() => {
-                    const contentHeight = document.body.scrollHeight;
+                    const contentHeight = document.documentElement.scrollHeight;
                     const viewportHeight = window.innerHeight;
                     const overflows = contentHeight > viewportHeight;
 
