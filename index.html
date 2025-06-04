@@ -246,7 +246,7 @@
         }
     </style>
 </head>
-<body id="main-body" class="min-h-screen flex flex-col">
+<body id="main-body" class="min-h-screen flex flex-col overflow-hidden">
     <!-- Header -->
     <header class="w-full py-2 text-center" style="scroll-margin-top: 3rem;">
         <div class="container mx-auto px-2">
@@ -523,6 +523,10 @@
         window.onbeforeunload = function () {
           setTimeout(() => window.scrollTo(0, 0), 0);
         };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('main-body').classList.add('overflow-hidden');
+        });
     </script>
 </body>
 </html>
