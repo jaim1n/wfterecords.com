@@ -246,7 +246,7 @@
         }
     </style>
 </head>
-<body id="main-body" class="min-h-screen flex flex-col overflow-hidden">
+<body id="main-body" class="min-h-screen flex flex-col">
     <!-- Header -->
     <header class="w-full py-2 text-center" style="scroll-margin-top: 3rem;">
         <div class="container mx-auto px-2">
@@ -443,11 +443,11 @@
                     body.classList.toggle('overflow-hidden', !overflows);
 
                     if (overflows) {
-                        footer.classList.remove('fixed', 'bottom-0', 'left-0');
+                        footer.classList.remove('fixed', 'bottom-0', 'inset-x-0');
                         footer.classList.add('static');
                     } else {
                         footer.classList.remove('static');
-                        footer.classList.add('fixed', 'bottom-0', 'left-0');
+                        footer.classList.add('fixed', 'bottom-0', 'inset-x-0');
                         window.scrollTo({ top: 0 });
                     }
                 }, 50);
@@ -465,11 +465,11 @@
                     body.classList.toggle('overflow-hidden', !overflows);
 
                     if (overflows) {
-                        footer.classList.remove('fixed', 'bottom-0', 'left-0');
+                        footer.classList.remove('fixed', 'bottom-0', 'inset-x-0');
                         footer.classList.add('static');
                     } else {
                         footer.classList.remove('static');
-                        footer.classList.add('fixed', 'bottom-0', 'left-0');
+                        footer.classList.add('fixed', 'bottom-0', 'inset-x-0');
                         window.scrollTo({ top: 0 });
                     }
                 }, 50);
@@ -489,11 +489,11 @@
             body.classList.toggle('overflow-hidden', !overflows);
 
             if (overflows) {
-                footer.classList.remove('fixed', 'bottom-0', 'left-0');
+                footer.classList.remove('fixed', 'bottom-0', 'inset-x-0');
                 footer.classList.add('static');
             } else {
                 footer.classList.remove('static');
-                footer.classList.add('fixed', 'bottom-0', 'left-0');
+                footer.classList.add('fixed', 'bottom-0', 'inset-x-0');
                 window.scrollTo({ top: 0 });
             }
         });
@@ -520,7 +520,9 @@
 
         setInterval(spawnEmoji, 200);
         
-        window.onbeforeunload = () => window.scrollTo(0, 0);
+        window.onbeforeunload = function () {
+          setTimeout(() => window.scrollTo(0, 0), 0);
+        };
     </script>
 </body>
 </html>
