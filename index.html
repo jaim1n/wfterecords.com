@@ -72,7 +72,6 @@
         .dropdown-menu p {
             color: #000000; /* Default black text for dropdown content */
             padding: 8px 12px;
-            margin: 0;
             font-size: 0.9rem;
             text-align: center;
         }
@@ -93,14 +92,12 @@
             justify-content: center;
             width: 200px;
             padding: 8px 12px;
-            margin: 4px 0;
             text-align: center;
         }
         .social-links {
             display: flex;
             gap: 8px;
             justify-content: center;
-            margin-top: 0;
         }
         .social-links a {
             padding: 2px;
@@ -126,6 +123,16 @@
             border-radius: 4px;
             margin-bottom: 4px;
             overflow: hidden;
+        }
+        .release-link-block {
+          display: inline-block;
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .release-link-block:hover {
+          text-decoration: none;
+          cursor: pointer;
         }
         .artist-image {
             width: 120px;
@@ -185,8 +192,8 @@
             transform: translateY(-150%);
             opacity: 0;
         }
+
         }
-        /* Marquee animation for scrolling text (new implementation) */
         .wrapper {
           max-width: 100%;
           overflow: hidden;
@@ -217,6 +224,18 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 1rem;
+        }
+
+        /* Grok-inspired typography for artists and releases */
+        .artist-item h3,
+        .release-item h3 {
+            margin: 15px 0 4px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .artist-item p, .release-item p {
+            color: #666;
         }
 
         @media (max-width: 640px) {
@@ -275,9 +294,9 @@
                     <div class="artists-wrapper">
                         <div class="artist-item">
                             <div class="artist-image">
-                                <img src="images/artists/bluu.png" alt="bluu" class="w-full h-full object-cover rounded mb-2">
+                                <img src="images/default.jpg" alt="bluu" class="w-full h-full object-cover rounded mb-2">
                             </div>
-                            <div class="text-center leading-none mb-1">bluu</div>
+                            <h3>bluu</h3>
                             <div class="social-links">
                                 <a href="https://instagram.com/9bluu" title="Instagram">📷</a>
                                 <a href="https://soundcloud.com/9bluu" title="SoundCloud">☁️</a>
@@ -287,7 +306,7 @@
                             <div class="artist-image">
                                 <img src="images/artists/jepe.jpg" alt="JEPE" class="w-full h-full object-cover rounded mb-2">
                             </div>
-                            <div class="text-center leading-none mb-1">JEPE</div>
+                            <h3>JEPE</h3>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/jespe.rr" title="Instagram">📷</a>
                                 <a href="https://x.com/jepex" title="Twitter">🐦</a>
@@ -298,7 +317,7 @@
                             <div class="artist-image">
                                 <img src="images/artists/ray.png" alt="Ray Angel (Digital Baptism)" class="w-full h-full object-cover rounded mb-2">
                             </div>
-                            <div class="text-center leading-none mb-1">Ray Angel</div>
+                            <h3>Ray Angel</h3>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/iseewhatyouwantfromme" title="Instagram">📷</a>
                             </div>
@@ -309,33 +328,33 @@
                 <!-- Releases Content -->
                 <div id="releases" class="dropdown-menu">
                         <div class="releases-wrapper">
-                           <div class="release-item">
-                                <a href="https://open.spotify.com/track/6Sqqd8jJ3lgcZkZAHeMfp4?si=8733e530cf8641a9" class="release-image">
-                                    <img src="images/covers/632x632bb.png" alt="JEPE - YOUNG & TURNT" class="w-full h-full object-cover rounded mb-1">
-                                </a>
-                                <a href="https://open.spotify.com/track/6Sqqd8jJ3lgcZkZAHeMfp4?si=8733e530cf8641a9" class="text-center">
-                                    <div class="font-semibold">JEPE</div>
-                                    <div class="text-sm">YOUNG & TURNT<br>Single</div>
-                                </a>
-                            </div>
-                            <div class="release-item">
-                                <a href="https://soundcloud.com/9bluu/sets/rio" class="release-image">
-                                    <img src="images/covers/rio.jpeg" alt="bluu - rio" class="w-full h-full object-cover rounded mb-1">
-                                </a>
-                                <a href="https://soundcloud.com/9bluu/sets/rio" class="text-center">
-                                    <div class="font-semibold">bluu</div>
-                                    <div class="text-sm">rio<br>Album</div>
-                                </a>
-                            </div>
-                            <div class="release-item">
-                                <a href="https://soundcloud.com/9bluu/sets/bluuray" class="release-image">
-                                    <img src="images/covers/bluuray.jpeg" alt="bluu - bluuray" class="w-full h-full object-cover rounded mb-1">
-                                </a>
-                                <a href="https://soundcloud.com/9bluu/sets/bluuray" class="text-center">
-                                    <div class="font-semibold">bluu</div>
-                                    <div class="text-sm">bluuray<br>Album</div>
-                                </a>
-                            </div>
+                            <a href="https://open.spotify.com/track/6Sqqd8jJ3lgcZkZAHeMfp4?si=8733e530cf8641a9" class="release-link-block">
+                                <div class="release-item">
+                                    <div class="release-image">
+                                        <img src="images/covers/632x632bb.png" alt="JEPE - YOUNG & TURNT" class="w-full h-full object-cover rounded mb-1">
+                                    </div>
+                                    <h3>JEPE</h3>
+                                    <p>YOUNG & TURNT<br>Single</p>
+                                </div>
+                            </a>
+                            <a href="https://soundcloud.com/9bluu/sets/rio" class="release-link-block">
+                                <div class="release-item">
+                                    <div class="release-image">
+                                        <img src="images/covers/rio.jpeg" alt="bluu - rio" class="w-full h-full object-cover rounded mb-1">
+                                    </div>
+                                    <h3>bluu</h3>
+                                    <p>rio<br>Album</p>
+                                </div>
+                            </a>
+                            <a href="https://soundcloud.com/9bluu/sets/bluuray" class="release-link-block">
+                                <div class="release-item">
+                                    <div class="release-image">
+                                        <img src="images/covers/bluuray.jpeg" alt="bluu - bluuray" class="w-full h-full object-cover rounded mb-1">
+                                    </div>
+                                    <h3>bluu</h3>
+                                    <p>bluuray<br>Album</p>
+                                </div>
+                            </a>
                         </div>
                 </div>
                 
