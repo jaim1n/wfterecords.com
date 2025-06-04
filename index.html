@@ -42,10 +42,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WFTE Records - Waiting For The End</title>
+    <meta name="theme-color" content="#fefbf6">
+    <title>WFTE Records</title>
+    <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
     <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/images/favicon/site.webmanifest" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -94,14 +96,11 @@
             margin: 4px 0;
             text-align: center;
         }
-        .artist-item span {
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
         .social-links {
             display: flex;
             gap: 8px;
             justify-content: center;
+            margin-top: 0;
         }
         .social-links a {
             padding: 2px;
@@ -125,7 +124,14 @@
             width: 120px;
             height: 120px;
             border-radius: 4px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            overflow: hidden;
+        }
+        .artist-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 4px;
+            margin-bottom: 4px;
             overflow: hidden;
         }
         body.noscroll {
@@ -149,7 +155,7 @@
             }
         }
         #emoji-waterfall {
-          position: absolute;
+          position: fixed;
           bottom: 0;
           left: 0;
           width: 100%;
@@ -180,28 +186,30 @@
             opacity: 0;
         }
         }
-        /* Marquee animation for scrolling text */
+        /* Marquee animation for scrolling text (new implementation) */
+        .wrapper {
+          max-width: 100%;
+          overflow: hidden;
+        }
+
+        .marquee {
+          white-space: nowrap;
+          overflow: hidden;
+          display: inline-block;
+          animation: marquee 10s linear infinite;
+        }
+
+        .marquee p {
+          display: inline-block;
+        }
+
         @keyframes marquee {
           0% {
-            transform: translateX(0%);
+            transform: translate3d(0, 0, 0);
           }
           100% {
-            transform: translateX(-100%);
+            transform: translate3d(-50%, 0, 0);
           }
-        }
-
-        .marquee-container {
-          width: 100%;
-          overflow: hidden;
-          position: relative;
-          max-width: 100vw;
-        }
-
-        .animate-marquee {
-          display: inline-block;
-          white-space: nowrap;
-          animation: marquee 30s linear infinite;
-          animation-iteration-count: infinite;
         }
         
         .artists-wrapper {
@@ -232,19 +240,16 @@
         <!-- Main Content -->
         <main class="container mx-auto px-2 py-6 text-center">
             <h2 class="text-3xl font-semibold mb-2">WFTE Records</h2>
-        <div class="marquee-container overflow-hidden text-lg mb-2">
-          <div class="animate-marquee whitespace-nowrap">
-            <span class="inline-block pr-8">
-              Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
-            </span>
-            <span class="inline-block pr-8">
-              Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
-            </span>
-            <span class="inline-block pr-8">
-              Global record label. Established in Orlando, Florida, United States of America. Circa 2017.
-            </span>
-          </div>
-        </div>
+            <div class="wrapper">
+              <div class="marquee">
+                <p>
+                  Global record label. Established in Orlando, Florida, United States of America. Circa 2018. Global record label. Established in Orlando, Florida, United States of America. Circa 2018.
+                </p>
+                <p>
+                  Global record label. Established in Orlando, Florida, United States of America. Circa 2018. Global record label. Established in Orlando, Florida, United States of America. Circa 2018.
+                </p>
+              </div>
+            </div>
         </main>
 
         <!-- Navigation -->
@@ -269,32 +274,31 @@
                 <div id="artists" class="dropdown-menu">
                     <div class="artists-wrapper">
                         <div class="artist-item">
-                            <div class="release-image">
-                                <img src="images/artists/bluu.png" alt="bluu" class="w-full h-full object-cover rounded">
+                            <div class="artist-image">
+                                <img src="images/artists/bluu.png" alt="bluu" class="w-full h-full object-cover rounded mb-2">
                             </div>
-                            <span>bluu</span>
+                            <div class="text-center leading-none mb-1">bluu</div>
                             <div class="social-links">
                                 <a href="https://instagram.com/9bluu" title="Instagram">📷</a>
                                 <a href="https://soundcloud.com/9bluu" title="SoundCloud">☁️</a>
                             </div>
                         </div>
                         <div class="artist-item">
-                            <div class="release-image">
-                                <img src="images/artists/jepe.jpg" alt="JEPE" class="w-full h-full object-cover rounded">
+                            <div class="artist-image">
+                                <img src="images/artists/jepe.jpg" alt="JEPE" class="w-full h-full object-cover rounded mb-2">
                             </div>
-                            <span>JEPE</span>
+                            <div class="text-center leading-none mb-1">JEPE</div>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/jespe.rr" title="Instagram">📷</a>
                                 <a href="https://x.com/jepex" title="Twitter">🐦</a>
-                                <a href="https://open.spotify.com/artist/5Fuk4ElaLTjEfYu2fLT68p" title="Spotify">🎵</a>
                                 <a href="https://soundcloud.com/2043" title="SoundCloud">☁️</a>
                             </div>
                         </div>
                         <div class="artist-item">
-                            <div class="release-image">
-                                <img src="images/artists/ray.png" alt="Ray Angel (Digital Baptism)" class="w-full h-full object-cover rounded">
+                            <div class="artist-image">
+                                <img src="images/artists/ray.png" alt="Ray Angel (Digital Baptism)" class="w-full h-full object-cover rounded mb-2">
                             </div>
-                            <span>Ray Angel<br>(Digital Baptism)</span>
+                            <div class="text-center leading-none mb-1">Ray Angel</div>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/iseewhatyouwantfromme" title="Instagram">📷</a>
                             </div>
@@ -307,7 +311,7 @@
                         <div class="releases-wrapper">
                            <div class="release-item">
                                 <a href="https://open.spotify.com/track/6Sqqd8jJ3lgcZkZAHeMfp4?si=8733e530cf8641a9" class="release-image">
-                                    <img src="images/covers/632x632bb.png" alt="JEPE - YOUNG & TURNT" class="w-full h-full object-cover rounded">
+                                    <img src="images/covers/632x632bb.png" alt="JEPE - YOUNG & TURNT" class="w-full h-full object-cover rounded mb-1">
                                 </a>
                                 <a href="https://open.spotify.com/track/6Sqqd8jJ3lgcZkZAHeMfp4?si=8733e530cf8641a9" class="text-center">
                                     <div class="font-semibold">JEPE</div>
@@ -316,7 +320,7 @@
                             </div>
                             <div class="release-item">
                                 <a href="https://soundcloud.com/9bluu/sets/rio" class="release-image">
-                                    <img src="images/covers/rio.jpeg" alt="bluu - rio" class="w-full h-full object-cover rounded">
+                                    <img src="images/covers/rio.jpeg" alt="bluu - rio" class="w-full h-full object-cover rounded mb-1">
                                 </a>
                                 <a href="https://soundcloud.com/9bluu/sets/rio" class="text-center">
                                     <div class="font-semibold">bluu</div>
@@ -325,7 +329,7 @@
                             </div>
                             <div class="release-item">
                                 <a href="https://soundcloud.com/9bluu/sets/bluuray" class="release-image">
-                                    <img src="images/covers/bluuray.jpeg" alt="bluu - bluuray" class="w-full h-full object-cover rounded">
+                                    <img src="images/covers/bluuray.jpeg" alt="bluu - bluuray" class="w-full h-full object-cover rounded mb-1">
                                 </a>
                                 <a href="https://soundcloud.com/9bluu/sets/bluuray" class="text-center">
                                     <div class="font-semibold">bluu</div>
@@ -352,7 +356,7 @@
     </div>
 
     <!-- Footer -->
-    <footer id="site-footer" class="w-full py-2 text-center sticky bottom-0 sm:static relative z-10">
+    <footer id="site-footer" class="w-full py-2 text-center fixed bottom-0 left-0 z-10">
         <p>© 2025 Waiting For The End. All rights reserved.</p>
         <div id="emoji-waterfall" class="w-full h-24 overflow-hidden"></div>
     </footer>
@@ -425,6 +429,7 @@
                     } else {
                         footer.classList.remove('static');
                         footer.classList.add('fixed', 'bottom-0', 'left-0');
+                        window.scrollTo({ top: 0 });
                     }
                 }, 50);
             } else {
@@ -446,8 +451,8 @@
                     } else {
                         footer.classList.remove('static');
                         footer.classList.add('fixed', 'bottom-0', 'left-0');
+                        window.scrollTo({ top: 0 });
                     }
-                    window.scrollTo({ top: 0 });
                 }, 50);
             }
         }
@@ -470,6 +475,7 @@
             } else {
                 footer.classList.remove('static');
                 footer.classList.add('fixed', 'bottom-0', 'left-0');
+                window.scrollTo({ top: 0 });
             }
         });
         const emojiContainer = document.getElementById('emoji-waterfall');
@@ -494,6 +500,8 @@
         }
 
         setInterval(spawnEmoji, 200);
+        
+        window.onbeforeunload = () => window.scrollTo(0, 0);
     </script>
 </body>
 </html>
