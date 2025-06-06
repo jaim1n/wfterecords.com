@@ -57,6 +57,22 @@
             color: #000000; /* Default black text */
             font-family: 'Arial', sans-serif;
         }
+
+        .rotate-logo {
+          animation: spin 5s linear infinite;
+          width: 200px; /* optional */
+          height: auto;
+          display: block;
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
         .dropdown-menu {
             display: none;
             background-color: #f5f2ed; /* Slightly darker off-white */
@@ -158,7 +174,17 @@
         }
         @media (max-width: 640px) {
             .dropdown-menu {
-                margin-bottom: 60px; /* avoid overlap with fixed footer */
+                margin-bottom: 80px; /* extra space to avoid overlapping footer */
+            }
+
+            footer {
+                bottom: env(safe-area-inset-bottom, 0); /* safer footer position on mobile */
+            }
+        }
+
+        @media (min-width: 641px) {
+            .dropdown-menu {
+                margin-bottom: 80px; /* create space above fixed footer on desktop too */
             }
         }
         #emoji-waterfall {
@@ -250,7 +276,7 @@
     <!-- Header -->
     <header class="w-full py-2 text-center" style="scroll-margin-top: 3rem;">
         <div class="container mx-auto px-2">
-            <img src="images/zeus.png" class="mx-auto" style="max-width: 200px; height: auto;">
+            <img src="images/logo.png" alt="Rotating Logo" class="rotate-logo mx-auto" style="max-width: 200px; height: auto;">
         </div>
     </header>
 
@@ -333,8 +359,8 @@
                                     <div class="release-image">
                                         <img src="images/covers/632x632bb.png" alt="JEPE - YOUNG & TURNT" class="w-full h-full object-cover rounded mb-1">
                                     </div>
-                                    <h3>JEPE</h3>
-                                    <p>YOUNG & TURNT<br>Single</p>
+                                    <h3>YOUNG & TURNT</h3>
+                                    <p>Single by JEPE</p>
                                 </div>
                             </a>
                             <a href="https://soundcloud.com/9bluu/sets/rio" class="release-link-block">
@@ -342,8 +368,8 @@
                                     <div class="release-image">
                                         <img src="images/covers/rio.jpeg" alt="bluu - rio" class="w-full h-full object-cover rounded mb-1">
                                     </div>
-                                    <h3>bluu</h3>
-                                    <p>rio<br>Album</p>
+                                    <h3>rio</h3>
+                                    <p>Album by bluu</p>
                                 </div>
                             </a>
                             <a href="https://soundcloud.com/9bluu/sets/bluuray" class="release-link-block">
@@ -351,8 +377,8 @@
                                     <div class="release-image">
                                         <img src="images/covers/bluuray.jpeg" alt="bluu - bluuray" class="w-full h-full object-cover rounded mb-1">
                                     </div>
-                                    <h3>bluu</h3>
-                                    <p>bluuray<br>Album</p>
+                                    <h3>bluuray</h3>
+                                    <p>Album by bluu</p>
                                 </div>
                             </a>
                         </div>
@@ -360,6 +386,12 @@
                 
                 <!-- Contact Content -->
                 <div id="contact" class="dropdown-menu">
+                    <div class="flex justify-center mt-2">
+                        <p>We’re looking to expand our talent roster and music portfolio. Show us what you’ve got.<br>WFTE gives artists a platform to release music freely while keeping full ownership. We distribute to all major platforms. You keep 100% of your royalties—no money required. Just fill out the form below or email us your latest tracks.</p>
+                    </div>
+                    <div class="flex justify-center mt-2">
+                        <a href="https://forms.gle/JhtkHWZkqvQo4ic3A"><b>APPLY HERE</b></a>
+                    </div>
                     <div class="flex justify-center mt-2">
                         <a href="mailto:jaimin@waitingfortheend.com">jaimin@waitingfortheend.com</a>
                     </div>
@@ -369,8 +401,12 @@
                         <a href="https://soundcloud.com/wfterecords" title="SoundCloud">☁️</a>
                         <a href="https://www.youtube.com/@wfterecords" title="YouTube">▶️</a>
                         <a href="https://app.landr.com/network/users/waitingfortheend" title="LANDR">🛬</a>
+                    </div>
+                    <div class="mt-4">
+                      <img src="images/zeus.png" alt="Zeus" style="max-width: 150px; margin: 0 auto;">
+                    </div>
+                    <p>Website designed by Jaimin.<br>Logo designed by Etheral.</p>
                 </div>
-            </div>
         </nav>
     </div>
 
@@ -448,9 +484,8 @@
                     } else {
                         footer.classList.remove('static');
                         footer.classList.add('fixed', 'bottom-0', 'inset-x-0');
-                        window.scrollTo({ top: 0 });
                     }
-                }, 50);
+                }, 100);
             } else {
                 // Remove the dropdown
                 dropdown.classList.remove('show');
@@ -470,9 +505,8 @@
                     } else {
                         footer.classList.remove('static');
                         footer.classList.add('fixed', 'bottom-0', 'inset-x-0');
-                        window.scrollTo({ top: 0 });
                     }
-                }, 50);
+                }, 100);
             }
         }
 
