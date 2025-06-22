@@ -47,26 +47,30 @@
 
         body::before {
             content: " ";
-            display: block;
             position: fixed;
             top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
+            width: 100vw;
+            height: 100vh;
             background: linear-gradient(rgb(82 15 15 / 48%) 50%, rgb(0 0 0 / 0%) 50%);
-            z-index: 2;
             background-size: 100% 2px, 3px 100%;
+            z-index: 2;
             pointer-events: none;
+            display: block;
         }
 
         @media (max-width: 768px) {
             body::before {
-                position: absolute;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
                 background: linear-gradient(rgb(82 15 15 / 48%) 50%, rgb(0 0 0 / 0%) 50%);
                 background-size: 100% 2px, 3px 100%;
-                height: 100%;
-                width: 100%;
                 z-index: 2;
+                pointer-events: none;
+                display: block;
             }
         }
 
@@ -94,7 +98,7 @@
             gap: 10px;
         }
 
-        nav .links a {
+        nav .links a, li {
             text-decoration: none;
             color: #af3838;
             font-size: 0.98em;
@@ -104,6 +108,52 @@
         nav .links li:not(:last-child)::after {
             content: " ☆ ";
             color: #ff0202;
+        }
+
+        .scrolling-nav {
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: black;
+            padding: 4px 0;
+            border-top: 2px solid #520000;
+            border-bottom: 2px solid #520000;
+        }
+
+        .scrolling-track {
+            display: flex;
+            animation: scroll-left 30s linear infinite;
+            width: max-content;
+        }
+
+        .scrolling-links {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .scrolling-links li {
+            color: #af3838;
+            font-size: max(0.98em, 12px);
+            font-family: monospace;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .scrolling-links li:not(:last-child)::after {
+            content: " ☆ ";
+            color: #ff0202;
+            margin-left: 5px;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .online {
@@ -175,9 +225,8 @@
 
         .inner {
             color: #2f6b6ade !important;
-            background: url(https://i.pinimg.com/originals/a1/7e/d0/a17ed0a1a3ea7e59b8077d4fb9e3d352.gif) #650b0b96;
+            background: url(https://i.pinimg.com/originals/a1/7e/d0/a17ed0a1a3ea7e59b8077d4fb9e3d352.gif);
             border: 6px double #000;
-            background-color: #000000de;
             border-radius: 0px !important;
             box-shadow: 5px 8px #ba0000 !important;
             background-blend-mode: color;
@@ -374,12 +423,36 @@
             <div style="color: white; font-weight: bold;">WFTE Records</div>
             <div class="online"></div>
         </div>
-        <ul class="links">
-            <li><a href="#home" onclick="event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });">Home</a></li>
-            <li><a href="#artists" onclick="event.preventDefault(); showTab('artists');">Artists</a></li>
-            <li><a href="#releases" onclick="event.preventDefault(); showTab('releases');">Releases</a></li>
-            <li><a href="#contact" onclick="event.preventDefault(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Contact</a></li>
-        </ul>
+        <div class="scrolling-nav">
+            <div class="scrolling-track">
+                <ul class="scrolling-links">
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <main>
@@ -401,11 +474,7 @@
                     <div class="inner">
                         <div class="section">
                             <h4>About Us:</h4>
-                            <p class="outlined-text">WFTE gives artists a platform to release music freely while keeping full ownership. We distribute to all major platforms. You keep 100% of your royalties - no money required.</p>
-                        </div>
-                        <div class="section">
-                            <h4>What We Do:</h4>
-                            <p class="outlined-text">Artist Development • Music Production • Distribution • Marketing & Promotion • Creative Direction • Publishing</p>
+                            <p class="outlined-text">WFTE gives artists a platform to release music for free with competitive royalty splits. Your music is safe on our partner platforms forever, even if you decided to switch distributors. Our artists get to do what they do best while we handle the rest.</p>
                         </div>
                     </div>
                 </div>
