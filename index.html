@@ -303,6 +303,17 @@
             background-blend-mode: soft-light;
         }
 
+        footer .links {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            padding: 0;
+            margin: 0 auto;
+            list-style: none;
+        }
+
         .url-info p {
             font-size: 100%;
             margin: 0;
@@ -534,7 +545,7 @@
     </main>
 
     <footer class="outlined-text">
-        <p>&copy; © 2025 Waiting For The End. All rights reserved. Layout created by sybil and jaimin. Logo by Etheral.</p>
+        <p>© 2025 Waiting For The End. All rights reserved.<br>Layout created by sybil and jaimin. Logo by Etheral.</p>
         <ul class="links">
             <li><a href="#home" onclick="event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });">Home</a></li>
             <li><a href="#artists" onclick="event.preventDefault(); showTab('artists');">Artists</a></li>
