@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fefbf6">
+    <meta name="title" content="WFTE Records - Waiting For The End">
+    <meta name="description" content="Global independent label. 100% royalties to artists. Trap, Electronic, Experimental. Underground, always.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wfterecords.com/">
+    <meta property="og:title" content="WFTE Records">
+    <meta property="og:description" content="Global independent label. Underground, always.">
+    <meta property="og:image" content="https://wfterecords.com/images/social-banner.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://wfterecords.com/">
+    <meta name="twitter:title" content="WFTE Records">
+    <meta name="twitter:description" content="Global independent label. Underground, always.">
+    <meta name="twitter:image" content="https://wfterecords.com/images/social-banner.jpg">
+    <link rel="canonical" href="https://wfterecords.com/" />
+    <meta name="keywords" content="WFTE Records, independent label, underground music, trap, electronic, experimental, Orlando music, artist royalties, indie record label, Waiting For The End, waitingfortheend, waitingfortheend.com, music distribution, artist development, music production, global distribution, 100% royalties, artist freedom, underground label, trap music, electronic music, experimental music">
+    <meta name="author" content="Waiting For The End">
+    <title>WFTE Records</title>
+    <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/images/favicon/site.webmanifest" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .outlined-text {
+            color: #ffffff;
+            text-shadow:
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px  1px 0 #000,
+                1px  1px 0 #000;
+        }
+
+        body {
+            background-image: url(https://i.pinimg.com/originals/82/cb/ec/82cbecb96f2cc2330b20867cbda1b4f5.gif);
+            background-color: #e3e3e3;
+            font-family: verdana, arial, sans-serif, helvetica;
+            margin: 0;
+            padding: 0;
+        }
+
+        body::before {
+          content: " ";
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: calc(var(--vh, 1vh) * 100);
+          background: linear-gradient(rgb(82 15 15 / 48%) 50%, rgb(0 0 0 / 0%) 50%);
+          background-size: 100% 2px, 3px 100%;
+          z-index: 2;
+          pointer-events: none;
+          display: block;
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100dvh;
+                background: linear-gradient(rgb(82 15 15 / 48%) 50%, rgb(0 0 0 / 0%) 50%);
+                background-size: 100% 2px, 3px 100%;
+                z-index: 2;
+                pointer-events: none;
+                display: block;
+            }
+        }
+
+        * {
+            font-family: monospace;
+        }
+
+        nav .top {
+            background: #1D4ED8;
+            background: url(https://i.pinimg.com/originals/82/cb/ec/82cbecb96f2cc2330b20867cbda1b4f5.gif) fixed repeat top;
+            padding: 15px 10px 16px 10px;
+            display: flex;
+            background-size: cover;
+            background-position: bottom;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .links {
+            background-color: #000000;
+            padding: 3.5px 16px 5.5px 16px;
+            list-style: none;
+            margin: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        nav .links a, li {
+            text-decoration: none;
+            color: #af3838;
+            font-size: 0.98em;
+            font-size: max(0.98em, 12px);
+        }
+
+        nav .links li:not(:last-child)::after {
+            content: " ☆ ";
+            color: #ff0202;
+        }
+
+        .scrolling-nav {
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: black;
+            padding: 4px 0;
+            border-top: 2px solid #520000;
+            border-bottom: 2px solid #520000;
+        }
+
+        .scrolling-track {
+            display: flex;
+            animation: scroll-left 30s linear infinite;
+            width: max-content;
+        }
+
+        .scrolling-links {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .scrolling-links li {
+            color: #af3838;
+            font-size: max(0.98em, 12px);
+            font-family: monospace;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .scrolling-links li:not(:last-child)::after {
+            content: " ☆ ";
+            color: #ff0202;
+            margin-left: 5px;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .online {
+            content: url(https://64.media.tumblr.com/bf47d42e5ae52f4c49497e3782ca9c12/005dbf061fabc0c8-6d/s250x250_c1/8807bd70d376c90b1309c6464833e9eb0fa6d238.gifv);
+            width: 20px;
+            height: 20px;
+        }
+
+        main {
+            background: url(https://i.pinimg.com/474x/04/83/93/048393….jpg) #0000007d;
+            color: #ff6868d4;
+            padding: 6px 0px;
+            font-size: 80%;
+            background-size: cover;
+            border: solid 3px #bc1419;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .profile {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .profile h1 {
+            font-size: 2.7em;
+            margin: 0 0 10px 0;
+            font-family: fangsong;
+            color: #ff7777;
+            text-shadow: 2px 2px 0.5px #ff0000;
+            animation: glitch 1.4s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 8px #ff4444;
+        }
+
+        .general-about .profile-pic {
+            display: block;
+            float: left;
+            height: 150px;
+            width: 150px;
+            box-shadow: 0px 0px 15px #ff0707;
+            border: #831919 double 5px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+
+        .inner {
+            color: #2f6b6ade !important;
+            background: url(https://i.pinimg.com/originals/a1/7e/d0/a17ed0a1a3ea7e59b8077d4fb9e3d352.gif);
+            border: 6px double #000;
+            border-radius: 0px !important;
+            box-shadow: 5px 8px #ba0000 !important;
+            background-blend-mode: color;
+            background-size: cover;
+            padding: 10px;
+        }
+
+        .profile .contact, .profile .url-info, .profile .table-section {
+            width: 100%;
+            border: 9px double #000;
+            margin: 10px 0;
+            background: url(https://i.pinimg.com/originals/d1/ad/53/d1ad535a0ff589ee8668e354a72a836b.gif);
+            background-blend-mode: color;
+            background-size: cover;
+        }
+
+        .profile .blurbs .heading, .profile .friends .heading {
+            background: #000000b3;
+            color: #72878c;
+            padding: 2px 7px;
+            box-shadow: 4px 5px #7b0505;
+            border: inset #921d1d;
+        }
+
+        .profile .contact .heading, .profile .table-section .heading {
+            background: #000000;
+            color: #601414;
+            padding: 2px 7px;
+        }
+
+        .blurbs .section {
+            margin: 10px 0;
+        }
+
+        .blurbs .section h4 {
+            margin: 0;
+            color: #ED0707;
+            font-size: 13px;
+        }
+
+        .tab-container {
+            margin: 20px 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tab-button {
+            background: #000000;
+            color: #601414;
+            border: 2px solid #122945;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .tab-button.active {
+            background: #520000;
+            color: #ff6868d4;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .artist-card, .release-card {
+            background: #7600088c;
+            border: 2px solid #b71414;
+            margin: 10px 0;
+            padding: 15px;
+            box-shadow: 2px 5px #9a1010;
+        }
+
+        .artist-card h2, .release-card h2 {
+            color: #ff7777;
+            margin: 0 0 5px 0;
+            font-size: 14px;
+        }
+
+        .artist-card p, .release-card p {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #2f6b6ade;
+        }
+
+        b, strong {
+            font-weight: bolder;
+            color: #940000;
+            font-size: 13.5px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 70%;
+            margin: 10px 0 10px;
+            padding: 10px 5px;
+            background: url(https://i.pinimg.com/originals/91/fb/57/91fb5704a5c98a82f84c184d80650154.gif) #59001ea6;
+            background-size: auto;
+            background-position: center;
+            background-blend-mode: soft-light;
+        }
+
+        footer .links {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            padding: 0;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .url-info p {
+            font-size: 100%;
+            margin: 0;
+            word-break: break-all;
+            color: #8b8590;
+        }
+
+        .rotate-logo {
+          animation: spin 5s linear infinite;
+          width: 200px; /* optional */
+          height: auto;
+          display: block;
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @media (max-width: 768px) {
+            .profile {
+                grid-template-columns: 1fr;
+            }
+            
+            .general-about .profile-pic {
+                float: none;
+                margin: 0 auto 20px;
+            }
+        }
+
+        .artist-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .social-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .contact-icons {
+        display: flex;
+        justify-content: center;   /* center horizontally */
+        align-items: center;       /* center vertically */
+        flex-wrap: wrap;           /* wrap to next line on small screens */
+        gap: 15px;                 /* space between icons */
+        height: 100%;              /* fill inner container */
+        text-align: center;
+        }
+
+        .contact-icon {
+        width: 48px;   /* increase size */
+        height: 48px;
+        object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="scrolling-nav">
+            <div class="scrolling-track">
+                <ul class="scrolling-links">
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                    <li>Artist Development</li>
+                    <li>Music Production</li>
+                    <li>Distribution</li>
+                    <li>Marketing & Promotion</li>
+                    <li>Creative Direction</li>
+                    <li>Publishing</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="profile">
+            <div class="left-col">
+                <div class="blurbs">
+                    <div class="heading">
+                        <h4>Meet The Founder</h4>
+                    </div>
+                        <div>
+                                <div class="artist-card">
+                                    <img src="images/artists/jaimin.png" alt="jaimin" class="profile-pic">
+                                    <h2 class="artist-header">
+                                    jaimin
+                                    <span class="social-links">
+                                        <a href="https://www.instagram.com/jdimin" target="_blank">
+                                        <img src="images/instagram.gif" alt="Instagram" class="social-icon">
+                                        </a>
+                                    </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">Florida, Tennessee, Indiana</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">Trap, EDM, Alternative</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Manager, A&R, Producer, Creative Director</span></p>
+                                </div>
+                                    <div class="release-card">
+                                    <h2>jaimin - untitled</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">TBD</span></p>
+                                    <audio controls>
+                                        <source src="jack.wav" type="audio/wav">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    </div>
+                        </div>
+                </div>
+
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <div class="tab-button active" onclick="showTab('artists')">Artists</div>
+                        <div class="tab-button" onclick="showTab('releases')">Releases</div>
+                    </div>
+                    
+                    <div id="artists" class="tab-content active">
+                        <div class="blurbs">
+                            <div class="heading">
+                                <h4>Artist Roster</h4>
+                            </div>
+                            <div>
+                                <div class="artist-card">
+                                    <img src="images/artists/bluu.jpg" alt="bluu" class="profile-pic">
+                                    <h2 class="artist-header">
+                                        bluu
+                                        <span class="social-links">
+                                            <a href="https://www.instagram.com/9bluu" target="_blank">
+                                                <img src="images/instagram.gif" alt="Instagram" class="social-icon">
+                                            </a>
+                                            <a href="https://soundcloud.com/9bluu" target="_blank">
+                                                <img src="images/soundcloud.gif" alt="SoundCloud" class="social-icon">
+                                            </a>
+                                        </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">Arizona</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">Trap</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Producer, Visual Effects</span></p>
+                                </div>
+
+                                <div class="artist-card">
+                                    <img src="images/artists/dom.jpg" alt="domstupid" class="profile-pic">
+                                    <h2 class="artist-header">
+                                        domstupid
+                                        <span class="social-links">
+                                            <a href="https://www.instagram.com/domstupid_" target="_blank">
+                                                <img src="images/instagram.gif" alt="Instagram" class="social-icon">
+                                            </a>
+                                            <a href="https://www.youtube.com/@domstupid" target="_blank">
+                                                <img src="images/youtube.gif" alt="YouTube" class="social-icon">
+                                            </a>
+                                        </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">Florida</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">N/A</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Photographer, Visual Effects</span></p>
+                                </div>
+
+                                <div class="artist-card">
+                                    <img src="images/artists/jepe.jpg" alt="jepe" class="profile-pic">
+                                    <h2 class="artist-header">
+                                    jepe
+                                    <span class="social-links">
+                                        <a href="https://www.instagram.com/jespe.rr" target="_blank">
+                                        <img src="images/instagram.gif" alt="Instagram" class="social-icon">
+                                        </a>
+                                        <a href="https://x.com/jepex" target="_blank">
+                                        <img src="images/twitter.gif" alt="Twitter" class="social-icon">
+                                        </a>
+                                        <a href="https://soundcloud.com/2043" target="_blank">
+                                        <img src="images/soundcloud.gif" alt="SoundCloud" class="social-icon">
+                                        </a>
+                                    </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">Finland</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">Trap</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Rapper</span></p>
+                                </div>
+
+                                <div class="artist-card">
+                                    <img src="images/artists/ray.jpeg" alt="ray angel" class="profile-pic">
+                                    <h2 class="artist-header">
+                                    ray angel
+                                    <span class="social-links">
+                                        <a href="https://www.instagram.com/iseewhatyouwantfromme" target="_blank">
+                                            <img src="images/instagram.gif" alt="Instagram" class="social-icon">
+                                        </a>
+                                    </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">Florida</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">Electronic</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Vocalist, Producer, DJ</span></p>
+                                </div>
+
+
+                                <div class="artist-card">
+                                    <img src="images/artists/seasons.jpg" alt="seasons" class="profile-pic">
+                                    <h2 class="artist-header">
+                                    seasons
+                                    <span class="social-links">
+                                        <a href="https://soundcloud.com/loveseasons" target="_blank">
+                                            <img src="images/soundcloud.gif" alt="SoundCloud" class="social-icon">
+                                        </a>
+                                    </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">Unknown</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">Trap</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Producer</span></p>
+                                </div>
+
+                                <div class="artist-card">
+                                    <img src="images/artists/stacculaa.jpg" alt="stacculaa" class="profile-pic">
+                                    <h2 class="artist-header">
+                                    stacculaa
+                                    <span class="social-links">
+                                        <a href="https://www.instagram.com/stacculaa" target="_blank">
+                                        <img src="images/instagram.gif" alt="Instagram" class="social-icon">
+                                        </a>
+                                        <a href="https://x.com/stacculaa" target="_blank">
+                                        <img src="images/twitter.gif" alt="Twitter" class="social-icon">
+                                        </a>
+                                        <a href="https://soundcloud.com/countstacculaa" target="_blank">
+                                        <img src="images/soundcloud.gif" alt="SoundCloud" class="social-icon">
+                                        </a>
+                                    </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">Atlanta</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">Trap</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Rapper</span></p>
+                                </div>
+                                    
+                                <div class="artist-card">
+                                    <img src="images/artists/zukoo4s.jpg" alt="zukoo4s" class="profile-pic">
+                                    <h2 class="artist-header">
+                                    zukoo4s (stfusilver)
+                                    <span class="social-links">
+                                        <a href="https://www.instagram.com/zukoo4s" target="_blank">
+                                            <img src="images/instagram.gif" alt="Instagram" class="social-icon">
+                                        </a>
+                                        <a href="https://soundcloud.com/user-289417408" target="_blank">
+                                            <img src="images/soundcloud.gif" alt="SoundCloud" class="social-icon">
+                                        </a>
+                                    </span>
+                                    </h2>
+                                    <p><strong>Location(s):</strong> <span class="outlined-text">France</span></p>
+                                    <p><strong>Genre(s):</strong> <span class="outlined-text">EU Drill</span></p>
+                                    <p><strong>Role(s):</strong> <span class="outlined-text">Rapper</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="releases" class="tab-content">
+                        <div class="blurbs">
+                            <div class="heading">
+                                <h4>Latest Releases</h4>
+                            </div>
+                                <div class="release-card">
+                                    <h2>stacculaa - I DONT FEEL HATE</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">September 25, 2025</span></p>
+                                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/3bNN7w47AZaXrRQpXomKZ4?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>JEPE - Verta Hikeä Kyynelii</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Album</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">September 12, 2025</span></p>
+                                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/4eVy1CA1pwrNh1ZzkVSsEO?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>bluu, yung kirk - marta</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">August 31, 2025</span></p>
+                                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2162511918&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/9bluu" title="bluu" target="_blank" style="color: #cccccc; text-decoration: none;">bluu</a> · <a href="https://soundcloud.com/9bluu/yung-kirk-marta-bluu" title="yung kirk - marta (bluu)" target="_blank" style="color: #cccccc; text-decoration: none;">yung kirk - marta (bluu)</a></div>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>JEPE - Mähän Sanoin</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">August 15, 2025</span></p>
+                                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/5NaCJ60EMeCLVO19TJ9JJt?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>zukoo4s (stfusilver) - chrome</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">July 26, 2025</span></p>
+                                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/2LA1gOv2THhcsUpW89K9FZ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+                                
+                                <div class="release-card">
+                                    <h2>seasons - 1</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">EP</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">July 25, 2025</span></p>
+                                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2056106724&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/loveseasons" title="seasons" target="_blank" style="color: #cccccc; text-decoration: none;">seasons</a> · <a href="https://soundcloud.com/loveseasons/sets/one" title="1" target="_blank" style="color: #cccccc; text-decoration: none;">1</a></div>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>JEPE - 10K FREESTYLE</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">July 18, 2025</span></p>
+                                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/25gH2HIn3pJLLxhePnftl9?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>JEPE - DIIPIMPÄÄ KU RÄPPI</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">July 4, 2025</span></p>
+                                    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/10Hfl0UjckLxhihELmBsIt?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>domstupid, Samosthated - Online</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Music Video</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">June 22, 2025</span></p>
+                                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/pi93XzF73gw?si=2Ze0pZn4SI--8wNG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                                
+                                <div class="release-card">
+                                    <h2>JEPE - YOUNG & TURNT</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Single</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">April 25, 2025</span></p>
+                                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/6WHuq5o1iGe9W9yLsXZa4J?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                </div>
+
+                                <div class="release-card">
+                                    <h2>bluu - rio</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Album</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">March 29, 2025</span></p>
+                                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1994653388&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/9bluu" title="bluu" target="_blank" style="color: #cccccc; text-decoration: none;">bluu</a> · <a href="https://soundcloud.com/9bluu/sets/rio" title="rio" target="_blank" style="color: #cccccc; text-decoration: none;">rio</a></div>
+                                </div>
+                                
+                                <div class="release-card">
+                                    <h2>bluu - bluuray</h2>
+                                    <p><strong>Type:</strong> <span class="outlined-text">Album</span></p>
+                                    <p><strong>Release Date:</strong> <span class="outlined-text">December 30, 2024</span></p>
+                                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1933363171&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/9bluu" title="bluu" target="_blank" style="color: #cccccc; text-decoration: none;">bluu</a> · <a href="https://soundcloud.com/9bluu/sets/bluuray" title="bluuray" target="_blank" style="color: #cccccc; text-decoration: none;">bluuray</a></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="table-section">
+            <div class="heading">Artist Spotlight</div>
+                <div class="inner">
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2040562395&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/wfterecords" title="WFTE EXCLUSIVES" target="_blank" style="color: #cccccc; text-decoration: none;">wfterecords</a> · <a href="https://soundcloud.com/wfterecords/sets/artist-spotlight" title="SPOTLIGHT" target="_blank" style="color: #cccccc; text-decoration: none;">SPOTLIGHT</a></div>
+                </div>
+
+                <div class="table-section">
+                    <div class="heading">Who's Up Next?</div>
+                    <div class="inner">
+                        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2035495035&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/wfterecords" title="WFTE EXCLUSIVES" target="_blank" style="color: #cccccc; text-decoration: none;">wfterecords</a> · <a href="https://soundcloud.com/wfterecords/sets/up-next" title="UP NEXT" target="_blank" style="color: #cccccc; text-decoration: none;">UP NEXT</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="outlined-text">
+        <p>© 2025 Waiting For The End. All rights reserved.<br>Layout created by Sybil and Jaimin. Logo created by Etheral.</p>
+        <ul class="links">
+            <li><a href="#home" onclick="event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });">Home</a></li>
+            <li><a href="#artists" onclick="event.preventDefault(); showTab('artists');">Artists</a></li>
+            <li><a href="#releases" onclick="event.preventDefault(); showTab('releases');">Releases</a></li>
+            <li><a href="#contact" onclick="event.preventDefault(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Connect</a></li>
+        </ul>
+    </footer>
+
+    <script>
+    function showTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => tab.classList.remove('active'));
+
+        // Remove active from all tab buttons
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => button.classList.remove('active'));
+
+        // Show selected tab
+        const selectedTab = document.getElementById(tabName);
+        selectedTab.classList.add('active');
+
+        // Highlight the correct button if one exists
+        const btn = document.querySelector(`.tab-button[onclick*="${tabName}"]`);
+        if (btn) btn.classList.add('active');
+
+        // Allow the DOM to repaint, then scroll
+        setTimeout(() => {
+        selectedTab.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 0);
+    }
+
+    // For footer links: intercept clicks and open correct tab
+    document.querySelectorAll('footer .links a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#artists') {
+                e.preventDefault();
+                showTab('artists');
+            } else if (href === '#releases') {
+                e.preventDefault();
+                showTab('releases');
+            } else if (href === '#contact') {
+                e.preventDefault();
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            } else if (href === '#home') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
+    </script>
+
+    <script>
+      function setVh() {
+        // 1% of viewport height
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+    
+      // Set on load
+      setVh();
+    
+      // Update on resize & orientation change
+      window.addEventListener('resize', setVh);
+      window.addEventListener('orientationchange', setVh);
+    </script>
+
+    <style>
+    body::before {
+        height: calc(var(--vh, 1vh) * 100);
+    }
+    </style>
+</body>
+</html>
